@@ -76,10 +76,10 @@ If a batch generates multiple files, the statistics try to count verified output
 
 ```bash
 cd /path/to/ComfyUI/custom_nodes
-git clone https://github.com/YOUR_USERNAME/ComfyUI-Batch-Image-Timer-Extended.git
+git clone https://github.com/kargulo007/ComfyUI-Batch-Image-Timer-Extended.git
 ```
 
-**Replace `YOUR_USERNAME`** with the actual repository owner after publishing. Restart the ComfyUI backend and hard-refresh the browser.
+Restart the ComfyUI backend and hard-refresh the browser.
 
 > ⚠️ **Do not activate this extension alongside the original Batch Image Timer**: both register `BatchImageTimer`, so installing both can cause node-name collisions. If replacing an existing installation, first back up its `data/` folder or export data using SETTINGS → DATA. See [Installation & migration](docs/INSTALLATION.md).
 
