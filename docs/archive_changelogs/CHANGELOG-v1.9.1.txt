@@ -1,0 +1,9 @@
+ComfyUI Batch Image Timer v1.9.1 — GPU Panel & Tools Layout
+
+- GPU & VRAM MONITOR is an independent, collapsible panel below Generation Statistics.
+- Settings > Pokaż GPU & VRAM Monitor w nodzie controls panel visibility (on by default).
+- GPU popup and output storage details remain accessible even if GPU panel is hidden.
+- Settings, Failures, Analytics and Monitor now live in a separate permanent TOOLS & PANELS area.
+- Tool launchers are available even when Generation Statistics is collapsed.
+- Node height responds to visibility/collapse settings without affecting time measurements.
+- SQLite schema and output counts unchanged; new setting persisted to existing settings.json.

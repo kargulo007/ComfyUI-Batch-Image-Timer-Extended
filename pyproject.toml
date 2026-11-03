@@ -1,0 +1,19 @@
+[project]
+name = "comfyui-batch-image-timer-extended"
+version = "1.9.2"
+authors = [{name = "Piotr Karwowski"}]
+maintainers = [{name = "Piotr Karwowski"}]
+description = "ComfyUI generation timer with history, analytics, GPU/VRAM monitoring and persistent SQLite statistics."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["aiohttp"]
+license = {file = "LICENSE"}
+keywords = ["comfyui", "timer", "generation", "gpu", "vram", "sqlite", "analytics"]
+
+# IMPORTANT: Before publishing to Comfy Registry, configure the repository URL,
+# your own verified PublisherId and icon. Do NOT reuse the upstream publisher ID.
+# [project.urls]
+# Repository = "https://github.com/YOUR_USERNAME/ComfyUI-Batch-Image-Timer-Extended"
+# [tool.comfy]
+# PublisherId = "YOUR_OWN_PUBLISHER_ID"
+# DisplayName = "Batch Image Timer Extended — Generation Monitor"

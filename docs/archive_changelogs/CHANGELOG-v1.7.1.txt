@@ -1,0 +1,8 @@
+ComfyUI Batch Image Timer v1.7.1 — Statistics ingestion fix
+
+- Counts successful image workflows that previously disappeared from SQLite when custom Save Image nodes omitted outputs.images (marked estimated).
+- Supports recognized nested output metadata and handles null image lists safely.
+- Server diagnostics at /batch_timer/stats/diagnostics and heartbeat/error information in /stats/health.
+- Reconciles recent in-memory ComfyUI history on startup.
+- Keeps deduplication by prompt_id, old SQLite records and user data.
+- Includes all v1.7 enhancements, can update v1.6 directly.

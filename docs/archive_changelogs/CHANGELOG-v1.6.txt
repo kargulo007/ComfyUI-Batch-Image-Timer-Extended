@@ -1,0 +1,13 @@
+v1.6.0
+- Default persistent SQLite database moved into custom node /data folder.
+- Safe one-time migration of existing v1.5 statistics database.
+- Automatic server-side recording of finalized image-generating executions;
+  browser need not remain open.
+- Durable recent history and workflow/preview metadata (last 30 snapshots).
+- Automatic recognition and display of currently executing node name.
+- Performance chart for the last 12 execution durations.
+- Chosen-day statistics (native date input) and downloadable CSV.
+- Model/resolution comparison view.
+- Clickable collapse/expand toggles for history and statistics.
+- CLEAR hides recent rows without erasing aggregates.
+- Existing generation timer and live sampler progress retained.

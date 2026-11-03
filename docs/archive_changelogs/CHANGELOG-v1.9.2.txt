@@ -1,0 +1,12 @@
+ComfyUI Batch Image Timer v1.9.2 — Settings, GPU Control & Data Management
+
+- Settings organized into MONITOR / DATA / SYSTEM tabs.
+- Show GPU & VRAM Monitor appears directly above Enable GPU Monitoring.
+- Disabling GPU monitoring stops NVIDIA telemetry sampling, not just the UI.
+- GPU device selection: AUTO, individual NVIDIA devices, ALL GPUs.
+- Live multi-GPU details in Monitor popup; independent storage panel remains.
+- Portable SQLite + server-settings ZIP export/import with confirmation,
+  schema/integrity validation and automatic pre-import safety backup.
+- System Check and compact database observer-status indicator.
+- Preserves existing v1.9.1 database, history, UI modules and backups.
+- No new Python dependencies.

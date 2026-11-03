@@ -1,0 +1,13 @@
+Batch Image Timer v1.8.0 — Analytics & Reliability
+
+* Interactive Render Performance chart + independent server-driven history.
+* Manual recheck and deduplication of server-side ComfyUI history.
+* Queue waiting time, only when source timestamps are available.
+* Run comparison (including seed where available), detailed run info.
+* Calendar of daily image output, render time, per-day drill-down.
+* Weekly generation insights.
+* Safe, confirmed restore from SQLite snapshots, automatic pre-restore backup.
+* Full backward compatibility of existing SQLite data (new seed and queue fields).
+* Keeps sound settings, volume/test, previews, gallery, and v1.7.2 UX.
+
+Never overwrite the existing data/ directory with an update ZIP.

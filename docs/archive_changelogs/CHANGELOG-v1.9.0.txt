@@ -1,0 +1,23 @@
+ComfyUI Batch Image Timer v1.9.0 — GPU Monitor & Output Storage
+
+1) GPU / VRAM: live utilization, VRAM used / total and GPU temperature on NVIDIA,
+   using available NVML or nvidia-smi without extra mandatory dependencies.
+   On other devices, the ComfyUI /system_stats endpoint may provide VRAM only.
+   GPU telemetry is device-wide, not ComfyUI-process-exclusive.
+2) Statistics footer: concise GPU reading plus MONITOR button. The main timer,
+   sampler progress, rendering history and Analytics tabs remain unchanged.
+3) MONITOR dialog: live GPU bars, storage totals by period, average saved-image
+   size and a user-triggered scan of ComfyUI's current output image folder.
+4) The server records known output file sizes per completed render. Size data is
+   saved in the existing SQLite database, no file contents are copied or read.
+5) Completed run details and comparison also show saved image size and sampled
+   GPU peak/average when measurements were available.
+6) Old databases are migrated additively; older records are backfilled from
+   current ComfyUI server history if output files still exist.
+7) Output scanning is NOT periodic. The on-demand scan has strict file/time
+   limits and never leaves the ComfyUI output directory.
+8) GPU telemetry is sampled every 4 seconds in a low-priority background daemon;
+   a sample-based GPU peak can miss short spikes. No artificial values are shown.
+
+Data stays in the local ComfyUI node data/rendering_statistics.sqlite3.
+PATCH updates seven code files and documentation; never remove data/ or backups/.

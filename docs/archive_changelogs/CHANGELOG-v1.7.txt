@@ -1,0 +1,26 @@
+Batch Image Timer v1.7.0 — Generation Monitor
+===============================================
+Based on v1.6.0 and hermankwan's original MIT project.
+
+- Performance slowdown checker: median baseline, strict model / resolution /
+  steps / CFG / batch-size / image-count matching. Threshold and sample count
+  configurable. No alert if too few comparable recorded timings.
+- Gallery of 10–50 recent individual images, with previews, prompt,
+  LOAD WORKFLOW, OPEN IN NEW TAB, and OPEN IMAGE controls.
+- Persistent failed/interrupted execution log, duration measurement and CSV.
+  Failures never count as successfully generated images.
+- Optional browser notifications and beep (off by default).
+- Automatic daily SQLite backups in data/backups and manual backup button.
+- Settings stored in data/settings.json; browser notification preferences
+  stored in the local browser only.
+- Select 5–20 visible history rows; hide/show graph and failure summary.
+- Settings and errors accessible from the third panel's footer.
+- v1.6 SQLite schema and records preserved; new failure table is created
+  automatically. No changes to existing generation-time clock semantics.
+- Existing three-section node layout retained; second and third sections
+  can be collapsed independently.
+
+Tests: Python syntax, JS syntax, mocked-backend schema migration, exact
+comparisons and deduplication, failed/interrupted runs, settings persistence,
+backup copy, simulation of restarts; mocked frontend drawing/click controls.
+Full live ComfyUI Portable/hosted verification still required.

@@ -1,0 +1,6 @@
+v1.7.2 — Browser sound reliability & volume (2026-11-03)
+- FIX: sound checkbox is independent of desktop notification checkbox.
+- FEATURE: volume slider 0–100%, default 70%, and TEST SOUND.
+- FEATURE: reuse/unlock Web Audio context on user gesture, two short tones.
+- Settings remain in this browser; no changes to SQLite or backend business logic.
+- Render performance chart: the final bright green bar indicates the latest recorded generation.
