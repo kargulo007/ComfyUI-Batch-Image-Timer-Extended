@@ -5,7 +5,7 @@ import { api } from '/scripts/api.js';
 const size=(v)=>v==null?'—':Number(v)<1024?`${v} B`:`${(Number(v)/1048576).toFixed(1)} MB`;
 const txt=(v)=>v == null ? '—' : String(v);
 const pad=n=>String(n).padStart(2,'0');
-const dateTime=ms=>ms ? new Date(ms).toLocaleString() : '—';
+const dateTime=ms=>ms ? new Date(ms).toLocaleString('en-GB') : '—';
 function duration(ms){
     if (ms==null || !Number.isFinite(Number(ms))) return '—';
     const s=Math.round(ms/1000),h=Math.floor(s/3600),m=Math.floor((s%3600)/60);
@@ -149,7 +149,7 @@ export function openAnalytics({imageURL,rowFromServer,loadWorkflowHere,openWorkf
             const info=notice(details,'Loading day…');
             try{
                 const data=await json('/batch_timer/stats/day?'+new URLSearchParams({start_ms:start.getTime(),end_ms:end.getTime()}));
-                info.textContent=`${start.toLocaleDateString()} · ${data.summary.images} images, ${data.summary.runs} runs, ${duration(data.summary.duration_ms)}`;
+                info.textContent=`${start.toLocaleDateString('en-GB')} · ${data.summary.images} images, ${data.summary.runs} runs, ${duration(data.summary.duration_ms)}`;
                 for(const record of data.entries.slice(0,20)){
                     const b=btn(details,`${dateTime(record.finished_ms)} · ${duration(record.duration_ms)} · ${record.image_count} img`,
                         ()=>void openRunDetails(record,{imageURL,loadWorkflowHere,openWorkflowNewTab,rowFromServer}));

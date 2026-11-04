@@ -164,7 +164,7 @@ export function openHardwarePanel(getDateStarts){
         {fontSize:'11px',color:'#8fa9b8',lineHeight:'1.5',marginBottom:'10px'});
     function showScan(info){
         scanInfo.textContent=info.ok?
-            `${info.files} current image files · ${fmtBytes(info.bytes)} · ${new Date(info.scanned_at_ms).toLocaleString()}`+
+            `${info.files} current image files · ${fmtBytes(info.bytes)} · ${new Date(info.scanned_at_ms).toLocaleString('en-GB')}`+
             (info.truncated?' · PARTIAL SCAN (safety limit reached)':''):
             'Scan error: '+(info.error||'unknown');
     }

@@ -4,7 +4,7 @@
 
 ### Generation Monitor · History · Analytics · GPU & VRAM · Storage
 
-![Version](https://img.shields.io/badge/version-1.9.2-16b88e)
+![Version](https://img.shields.io/badge/version-1.9.3-16b88e)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![ComfyUI](https://img.shields.io/badge/ComfyUI-custom%20node-333333)
 ![Python](https://img.shields.io/badge/backend-Python%20%2B%20SQLite-336699)
@@ -25,7 +25,7 @@
 
 ![Earlier working build of the extended ComfyUI timer: generation clock, recent images and statistics](assets/interface-preview-earlier-build.png)
 
-*Screenshot of an earlier working extended build. The v1.9.2 interface additionally includes a separate GPU & VRAM panel, the TOOLS & PANELS module and expanded settings. Replace this image with a current v1.9.2 screenshot before wider promotion.*
+*Screenshot of an earlier working extended build. The v1.9.3 interface additionally includes a separate GPU & VRAM panel, the TOOLS & PANELS module and expanded settings. Replace this image with a current v1.9.3 screenshot before wider promotion.*
 
 ## ✨ Features
 
@@ -76,10 +76,10 @@ If a batch generates multiple files, the statistics try to count verified output
 
 ```bash
 cd /path/to/ComfyUI/custom_nodes
-git clone https://github.com/kargulo007/ComfyUI-Batch-Image-Timer-Extended.git
+git clone https://github.com/YOUR_USERNAME/ComfyUI-Batch-Image-Timer-Extended.git
 ```
 
-Restart the ComfyUI backend and hard-refresh the browser.
+**Replace `YOUR_USERNAME`** with the actual repository owner after publishing. Restart the ComfyUI backend and hard-refresh the browser.
 
 > ⚠️ **Do not activate this extension alongside the original Batch Image Timer**: both register `BatchImageTimer`, so installing both can cause node-name collisions. If replacing an existing installation, first back up its `data/` folder or export data using SETTINGS → DATA. See [Installation & migration](docs/INSTALLATION.md).
 
@@ -160,11 +160,11 @@ The live GPU monitor reports whole-device data, not necessarily ComfyUI-only uti
 - Older previews require their original image files to remain available in ComfyUI output. Workflow reopening requires a retained workflow snapshot.
 - Browser sound may require interaction with the page because of autoplay restrictions.
 - The front-end uses canvas-based ComfyUI drawing; compatibility may vary with ComfyUI frontend changes and custom canvas implementations.
-- Features are based on v1.9.2 source and isolated/simulated checks; compatibility across all hardware configurations has **not** been independently confirmed.
+- Features are based on v1.9.3 source and isolated/simulated checks; compatibility across all hardware configurations has **not** been independently confirmed.
 
 ## 🗓️ Changelog & release
 
-See [CHANGELOG.md](CHANGELOG.md) and [v1.9.2 release notes](docs/RELEASE_NOTES_v1.9.2.md).
+See [CHANGELOG.md](CHANGELOG.md) and [v1.9.3 release notes](docs/RELEASE_NOTES_v1.9.3.md).
 
 ## 🤝 Credits & license
 
@@ -174,3 +174,4 @@ See [CHANGELOG.md](CHANGELOG.md) and [v1.9.2 release notes](docs/RELEASE_NOTES_v
 - **License:** [MIT](LICENSE), retaining the original copyright notice. See [attribution notice](NOTICE.md).
 
 This repository is an independent extended edition, not the official upstream distribution. Contributions, reproducible bug reports and pull requests are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+

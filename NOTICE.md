@@ -2,7 +2,7 @@
 
 ## Extended edition
 
-**ComfyUI Batch Image Timer Extended v1.9.2** is an independent modified
+**ComfyUI Batch Image Timer Extended v1.9.3** is an independent modified
 edition of the original timer. Its extended features, modifications and
 associated project documentation are credited as follows:
 

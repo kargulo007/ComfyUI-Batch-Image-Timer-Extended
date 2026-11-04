@@ -1,3 +1,9 @@
+## v1.9.3 — English UI Update
+
+- Standardized the full node interface in English: Settings, Gallery, Failures, History, Workflow actions and notifications.
+- Unified date/time display to English `en-GB` format.
+- No change to database structure, settings keys or generation logic.
+
 # Changelog
 
 Documented changes in the **Extended** edition based on the original [ComfyUI-Batch-Image-Timer](https://github.com/hermankwan/ComfyUI-Batch-Image-Timer).

@@ -1,7 +1,7 @@
 """Copyright (c) 2026 Piotr Karwowski — Extended modifications.
 
 ComfyUI Batch Image Timer Extended — independent modified distribution.
-Extended version: 1.9.2
+Extended version: 1.9.3
 
 Based on the original ComfyUI-Batch-Image-Timer by Herman Kwan.
 Original copyright (c) 2026 Herman Kwan.
@@ -9,7 +9,7 @@ MIT-licensed original software: see LICENSE and NOTICE.md.
 The extended version is not an official upstream release.
 """
 
-__version__ = "1.9.2"
+__version__ = "1.9.3"
 
 from .batch_image_timer import BatchImageTimer
 from . import timer_statistics  # Registers persistent statistics API routes

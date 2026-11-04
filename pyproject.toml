@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-batch-image-timer-extended"
-version = "1.9.2"
+version = "1.9.3"
 authors = [{name = "Piotr Karwowski"}]
 maintainers = [{name = "Piotr Karwowski"}]
 description = "ComfyUI generation timer with history, analytics, GPU/VRAM monitoring and persistent SQLite statistics."
@@ -12,8 +12,8 @@ keywords = ["comfyui", "timer", "generation", "gpu", "vram", "sqlite", "analytic
 
 # IMPORTANT: Before publishing to Comfy Registry, configure the repository URL,
 # your own verified PublisherId and icon. Do NOT reuse the upstream publisher ID.
-[project.urls]
-Repository = "https://github.com/kargulo007/ComfyUI-Batch-Image-Timer-Extended"
+# [project.urls]
+# Repository = "https://github.com/YOUR_USERNAME/ComfyUI-Batch-Image-Timer-Extended"
 # [tool.comfy]
 # PublisherId = "YOUR_OWN_PUBLISHER_ID"
 # DisplayName = "Batch Image Timer Extended — Generation Monitor"

@@ -1,5 +1,5 @@
 /**
- * Extended modifications: Copyright (c) 2026 Piotr Karwowski. Batch Image Timer — Generation Monitor v1.9.2 (MIT). */
+ * Extended modifications: Copyright (c) 2026 Piotr Karwowski. Batch Image Timer — Generation Monitor v1.9.3 (MIT). */
 import { app } from "/scripts/app.js";
 import {openGallery, openFailures, openSettings, installNotifications} from "./batch_timer_extras.js";
 import { api } from "/scripts/api.js";
@@ -151,7 +151,7 @@ function rowKey(row) { return `${row.when}:${row.promptId || "legacy"}`; }
 function hit(pos, a) { return !!(pos && a && pos[0] >= a.x && pos[0] <= a.x + a.w && pos[1] >= a.y && pos[1] <= a.y + a.h); }
 function countForRow(row) { return Number.isFinite(row?.imageCount) && row.imageCount > 0 ? row.imageCount : null; }
 function perImageMs(row) { const n = countForRow(row); return n ? row.durationMs / n : null; }
-function formatTime(epochMs) { return new Date(epochMs).toLocaleTimeString("pl-PL", { hour12: false }); }
+function formatTime(epochMs) { return new Date(epochMs).toLocaleTimeString("en-GB", { hour12: false }); }
 
 function snapshotCurrentWorkflow() {
     try {
@@ -274,7 +274,7 @@ function showChartTooltip(record,event){
     }
     const dt=new Date(record.finished_ms);
     chartTooltip.textContent=[
-        dt.toLocaleString(),
+        dt.toLocaleString('en-GB'),
         'RENDER '+formatDuration(record.duration_ms),
         (record.model || 'Unknown model').slice(0,65),
         'Size '+(record.resolution||'—')+' · Steps '+(record.steps??'—'),
@@ -851,21 +851,21 @@ function transferToken() {
     return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 function alertUnavailable() {
-    window.alert("Nie znaleziono zapisanego workflow. Możesz ponownie wygenerować grafikę z zapisanym workflow lub pobrać go z metadanych PNG, jeśli są dostępne.");
+    window.alert("No saved workflow was found. You can rerun the generation with a saved workflow or recover it from PNG metadata, if available.");
 }
 async function loadWorkflowHere(row) {
     const data = await workflowForRow(row);
     if (!data) return alertUnavailable();
-    if (!window.confirm("Wczytać zapisany workflow w bieżącej karcie? Aktualnie otwarty workflow może zostać zastąpiony.")) return;
+    if (!window.confirm("Load the saved workflow in this tab? The currently open workflow may be replaced.")) return;
     try { await app.loadGraphData(data, true, true); hidePopup(); }
-    catch (error) { window.alert(`Nie udało się wczytać workflow: ${error?.message || error}`); }
+    catch (error) { window.alert(`Unable to load workflow: ${error?.message || error}`); }
 }
 async function openWorkflowNewTab(row) {
     // Open synchronously during a real click. Opening only after await/fetch
     // can cause Chrome/Edge popup blocking for a valid user action.
     const opened = window.open("about:blank", "_blank");
     if (!opened) {
-        window.alert("Przeglądarka zablokowała nową kartę. Zezwól na wyskakujące okna dla ComfyUI albo użyj LOAD WORKFLOW.");
+        window.alert("The browser blocked the new tab. Allow pop-ups for ComfyUI or use LOAD WORKFLOW.");
         return;
     }
     try {
@@ -876,7 +876,7 @@ async function openWorkflowNewTab(row) {
             localStorage.setItem(TRANSFER_PREFIX + token, JSON.stringify({ at: Date.now(), workflow: data }));
         } catch (_) {
             opened.close();
-            window.alert("Przeglądarka nie pozwoliła zapisać danych nowej karty (np. limit pamięci). Użyj LOAD WORKFLOW lub pobierz JSON.");
+            window.alert("The browser could not store data for the new tab (possibly a storage limit). Use LOAD WORKFLOW or download the JSON file.");
             return;
         }
         const target = new URL(window.location.href);
@@ -884,7 +884,7 @@ async function openWorkflowNewTab(row) {
         opened.location.href = target.toString();
     } catch (error) {
         opened.close();
-        window.alert(`Błąd otwierania nowej karty: ${error?.message || error}`);
+        window.alert(`Unable to open the new tab: ${error?.message || error}`);
     }
 }
 
@@ -910,7 +910,7 @@ function actionButton(parent, label, onClick) {
         e.preventDefault(); e.stopPropagation(); cancelHide();
         b.disabled = true;
         try { await onClick(); }
-        catch (error) { window.alert(`Operacja nie powiodła się: ${error?.message || error}`); }
+        catch (error) { window.alert(`Operation failed: ${error?.message || error}`); }
         finally { b.disabled = false; }
     });
     return b;
@@ -933,14 +933,14 @@ function renderPopup(row) {
         const frame = add("div", el, null, { margin: "4px 0 8px", borderRadius: "6px", background: "#06090d", textAlign: "center", overflow: "hidden" });
         const img = add("img", frame, null, { display: "block", width: "100%", height: "182px", objectFit: "contain" });
         img.alt = "ComfyUI generated output"; img.src = imageURL(pics[0]);
-        img.onerror = () => { img.style.display = "none"; add("div", frame, "Obraz nie jest już dostępny.", { padding: "20px", color: "#e5b381" }); };
-        if (row.preview.imageCount > 1) add("div", el, `${row.preview.imageCount} grafik w tym wykonaniu (podgląd pierwszej)`, { color: "#8d9ba7", fontSize: "11px", marginBottom: "7px" });
+        img.onerror = () => { img.style.display = "none"; add("div", frame, "The image is no longer available.", { padding: "20px", color: "#e5b381" }); };
+        if (row.preview.imageCount > 1) add("div", el, `${row.preview.imageCount} images in this run (showing the first image)`, { color: "#8d9ba7", fontSize: "11px", marginBottom: "7px" });
     } else if (row.preview?.unavailable) {
-        add("div", el, "Historia ComfyUI nie jest obecnie dostępna.", { color: "#e5b381" });
+        add("div", el, "ComfyUI history is currently unavailable.", { color: "#e5b381" });
     } else if (!row.preview) {
-        add("div", el, row.promptId ? "Wczytywanie obrazu i promptu…" : "Starszy pomiar bez zapisanego prompt_id.", { color: "#a8b1bb", marginBottom: "7px" });
+        add("div", el, row.promptId ? "Loading image and prompt…" : "Older record without a saved prompt ID.", { color: "#a8b1bb", marginBottom: "7px" });
     } else {
-        add("div", el, "Brak zapisanych grafik (np. brak Save Image).", { color: "#aab4c0" });
+        add("div", el, "No saved images found (for example, no Save Image node).", { color: "#aab4c0" });
     }
 
     const prompts = row.preview?.prompts || [];
@@ -965,7 +965,7 @@ function renderPopup(row) {
     if (row.preview?.images?.length) actionButton(actions, "OPEN IMAGE", () => {
         window.open(imageURL(row.preview.images[0]), "_blank");
     });
-    add("div", el, "Hover: podgląd  ·  Kliknij przycisk, by otworzyć workflow", { color: "#78899a", fontSize: "10px", marginTop: "8px" });
+    add("div", el, "Hover to preview · Click a button to open the workflow", { color: "#78899a", fontSize: "10px", marginTop: "8px" });
 }
 function hoverRow(node, row, event) {
     cancelHide();
@@ -1087,7 +1087,7 @@ function maybeImportTransferredWorkflow() {
     url.searchParams.delete(TRANSFER_PARAM);
     window.history.replaceState(null, "", url.toString());
     if (!payload?.workflow || Date.now() - payload.at > 5 * 60 * 1000) {
-        window.alert("Nie znaleziono workflow do otwarcia lub dane wygasły.");
+        window.alert("No workflow was found to open, or the transfer data has expired.");
         return;
     }
     let attempts = 0;
@@ -1100,7 +1100,7 @@ function maybeImportTransferredWorkflow() {
             // Give ComfyUI time to initialize/load its default workflow.
             await new Promise(resolve => setTimeout(resolve, 650));
             await app.loadGraphData(payload.workflow, true, true);
-        } catch (error) { window.alert(`Nie udało się otworzyć workflow: ${error?.message || error}`); }
+        } catch (error) { window.alert(`Unable to open workflow: ${error?.message || error}`); }
     };
     setTimeout(tryLoad, 450);
 }

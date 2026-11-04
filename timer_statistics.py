@@ -33,7 +33,7 @@ from . import timer_hardware as hardware
 import asyncio
 
 LOG = logging.getLogger('BatchImageTimer.Statistics')
-VERSION = '1.9.2'
+VERSION = '1.9.3'
 SESSION = uuid.uuid4().hex
 PLUGIN_DIR = Path(__file__).resolve().parent
 DB_PATH = None
@@ -1121,7 +1121,7 @@ async def storage_scan(request):
         return web.json_response({'ok':False,'error':type(exc).__name__},status=500)
 
 
-# v1.9.2 — System status, portable export/import. All actions operate on the
+# v1.9.3 — System status, portable export/import. All actions operate on the
 # local ComfyUI server. No generated image bytes are included in archives.
 def _system_health():
     result = {'version': VERSION, 'database': {}, 'observer': {}, 'output': {}, 'gpu': {}, 'files': {}}
